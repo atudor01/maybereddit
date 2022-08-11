@@ -23,7 +23,7 @@ class PostFactory extends Factory
             'user_id' => UserFactory::new()->create()->id,
             'title' => $title,
             'slug' => $slug,
-            'body' => fake()->paragraph($this->count),
+            'body' => fake()->paragraph(rand(1, 5)),
 
         ];
     }
