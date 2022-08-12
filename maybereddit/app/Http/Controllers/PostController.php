@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Http\Requests;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -18,26 +19,37 @@ class PostController extends Controller
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        //
+
+        return view('posts.create');
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StorePostRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StorePostRequest $request)
+
+    public function store(Post $post)
     {
-        //
+        $post->create([
+            'title' => request('title'),
+            'body' => request('body'),
+            'user_id' => auth()->id(),
+            'slug' => str_slug(request('title')),
+        ]);
+
+        return redirect()->route('posts.show', $post);
     }
+
+//        $attributes = request()->validate([
+//            'title' => 'required',
+//            'body' => 'required',
+//        ]);
+//        $attributes['user_id'] = auth()->id();
+//        $attributes['slug'] = str_slug($attributes['title']);
+//        Post::create($attributes);
+//
+//        return redirect('/');//->route('posts.show')->with('success', 'Post added successfully');
+//    }
 
     /**
      * Display the specified resource.
