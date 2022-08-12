@@ -16,12 +16,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-       // User::factory(100)->has(Post::factory())->create();
-//        User::factory(100)->create()->each(function($user){
-//        $posts = Post::factory(rand(1,5))->make();
-//        $user->posts()->saveMany($posts);
-//    });
         $this->call(RoleSeeder::class);
         $this->call(AdminSeeder::class);
+//       // User::factory(100)->has(Post::factory())->create();
+        User::factory(100)->create()->each(function($user){
+        $posts = Post::factory(rand(1,5))->make();
+        $user->posts()->saveMany($posts);
+    });
     }
 }
