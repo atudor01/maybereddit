@@ -40,13 +40,14 @@ class PostController extends Controller
     }
 
 
-    public function store(Post $post)
+    public function store(Request $request)
     {
-        $post->create([
-            'title' => request('title'),
-            'body' => request('body'),
+
+        $post = Post::create([
+            'title' => $request->title,
+            'body' => $request->body,
             'user_id' => auth()->id(),
-            'slug' => str_slug(request('title')),
+            'slug' => str_slug($request->title),
         ]);
 
         return redirect()->route('posts.show', $post);
@@ -63,49 +64,34 @@ class PostController extends Controller
 //        return redirect('/');//->route('posts.show')->with('success', 'Post added successfully');
 //    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Post $post)
     {
-        //
+        return view('posts.show', compact('post'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Post $post)
     {
-        //
+        return view('posts.edit', ['post' => $post]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdatePostRequest  $request
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdatePostRequest $request, Post $post)
+
+    public function update(Post $post)
     {
-        //
+        $post->update([
+            'title' => request('title'),
+            'body' => request('body'),
+            'slug' => str_slug(request('title')),
+        ]);
+        return redirect()->route('posts.show', $post);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect('/');
     }
 
 
