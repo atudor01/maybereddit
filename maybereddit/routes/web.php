@@ -14,9 +14,10 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', [PostController::class, 'index'])->name('posts.index');
+
+
 Route::get('posts/create', [PostController::class, 'create'])->name('posts.create')->middleware('auth');
 Route::post('posts', [PostController::class, 'store'])->name('posts.store')->middleware('auth');
 Route::get('posts/{post}', [PostController::class, 'show'])->name('posts.show');
@@ -29,9 +30,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+//    Route::get('/', [PostController::class, 'index'])->name('posts.index');
 });
 
 Route::middleware([
@@ -43,3 +42,4 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+

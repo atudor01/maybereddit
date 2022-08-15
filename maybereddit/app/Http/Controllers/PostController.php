@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Http\Requests\UpdatePostRequest;
 use App\Http\Requests;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -16,7 +17,18 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+
+        $posts = Post::orderBy('created_at', 'desc')->latest()->paginate();
+
+        //for loop to manipulate each post body should limit with 100 characters
+        foreach ($posts as $post) {
+            if (strlen($post->body) > 100) {
+                $post->body = substr($post->body, 0, 100) . '...';
+            }
+        }
+
+        return view('index', compact('posts'));
+
     }
 
 
@@ -81,4 +93,6 @@ class PostController extends Controller
         $post->delete();
         return redirect('/');
     }
+
+
 }
