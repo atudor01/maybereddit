@@ -1,10 +1,4 @@
-<html>
-<head>
-    <title>Edit Post</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-
-</head>
-<body>
+<x-header> </x-header>
 <div class="grid place-items-center">
     <div class="text-center text-3xl font-bold text-gray-800 px-8 py-8">Edit Post</div>
     <div class="w-full max-w-sm block p-6 rounded-lg shadow-lg bg-white">
@@ -75,6 +69,4 @@
         </form>
     </div>
 </div>
-</body>
-
-</html>
+<x-footer> </x-footer>
