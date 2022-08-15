@@ -16,9 +16,15 @@ class PostPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
+    public function before(User $user, $ability)
+    {
+        if ($user->hasRole('admin')) {
+            return true;
+        }
+    }
     public function viewAny(User $user)
     {
-        //
+        return $user->hasRole('admin');
     }
 
     /**
@@ -30,7 +36,8 @@ class PostPolicy
      */
     public function view(User $user, Post $post)
     {
-        //
+        return $user->id === $post->user_id;
+
     }
 
     /**
@@ -44,16 +51,17 @@ class PostPolicy
         //
     }
 
-    /**
-     * Determine whether the user can update the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
     public function update(User $user, Post $post)
     {
-        //
+        return $user->id === $post->user_id;
+    }
+
+    public function edit(User $user, Post $post)
+    {
+        if($user->id === $post->user_id) {
+            return true;
+        }
+
     }
 
     /**
@@ -91,4 +99,6 @@ class PostPolicy
     {
         //
     }
+    //isAdmin() is a method in the User model
+
 }
