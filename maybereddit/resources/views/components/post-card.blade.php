@@ -1,6 +1,6 @@
 
 @if(isset($post))
-<div class="p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 mx-3 my-3">
+<div class="flex-none p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 mx-3 my-3 grid justify-items-center" style="width: 500px">
     <a href="#">
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ isset($post->title) ? $post->title : 'Title not found' }}</h5>
     </a>
