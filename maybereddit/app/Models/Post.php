@@ -8,11 +8,19 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
 {
+
+    use HasFactory, SoftDeletes;
+
+    protected $fillable = [
+        'user_id',
+        'title',
+        'slug',
+        'body',
+    ];
+
     public function author()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
-
-    use HasFactory, SoftDeletes;
 }
