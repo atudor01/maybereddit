@@ -18,7 +18,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(RoleSeeder::class);
         $this->call(AdminSeeder::class);
-z
         User::factory(100)->create()->each(function($user){
         $posts = Post::factory(rand(1,5))->make();
         $user->posts()->saveMany($posts);
