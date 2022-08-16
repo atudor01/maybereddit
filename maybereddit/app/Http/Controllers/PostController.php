@@ -69,7 +69,18 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        return view('posts.show', compact('post'));
+
+        $user = auth()->user();
+//        if ($user->hasRole('admin')){
+//            dd('yersss');
+//        }else{
+//            dd('no');
+//        }
+
+
+
+
+        return view('posts.show', compact('post', 'user'));
     }
 
 

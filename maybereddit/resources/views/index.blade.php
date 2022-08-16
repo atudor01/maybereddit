@@ -1,6 +1,6 @@
 <x-header></x-header>
 
-<div class="grid  sm:grid-cols-1 md:grid-cols-2  justify-items-center">
+<div class="w-full flex flex-wrap justify-center ">
 
 
 
