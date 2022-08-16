@@ -18,14 +18,16 @@ class PostController extends Controller
     public function index()
     {
 
-        $posts = Post::orderBy('created_at', 'desc')->latest()->paginate();
+        // get latest posts
+        $posts = Post::latest()->paginate();
 
+        // No need for this because you can use Str::limit() in the view
         //for loop to manipulate each post body should limit with 100 characters
-        foreach ($posts as $post) {
-            if (strlen($post->body) > 100) {
-                $post->body = substr($post->body, 0, 100) . '...';
-            }
-        }
+//        foreach ($posts as $post) {
+//            if (strlen($post->body) > 100) {
+//                $post->body = substr($post->body, 0, 100) . '...';
+//            }
+//        }
 
         return view('index', compact('posts'));
 

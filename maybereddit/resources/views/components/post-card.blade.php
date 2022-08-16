@@ -7,7 +7,7 @@
     <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
         @if(isset($post->body))
 
-              {{ $post->body }}
+              {{ Str::limit($post->body, 50) }}
 
         @else
             Body not found
