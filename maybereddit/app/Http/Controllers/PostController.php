@@ -49,8 +49,9 @@ class PostController extends Controller
             'title' => $request->title,
             'body' => $request->body,
             'user_id' => auth()->id(),
-            'slug' => str_slug($request->title),
+            //'slug' => str_slug($request->title),
         ]);
+
 
         return redirect()->route('posts.show', $post);
     }
