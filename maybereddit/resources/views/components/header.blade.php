@@ -15,8 +15,8 @@
 </head>
 
 <body>
-<div class="container mx-auto">
-<nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900 bg-slate-200">
+<div class="w-full flex flex-col h-screen justify-between">
+<nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900 bg-slate-200">
 
 
 
@@ -40,9 +40,13 @@
                     </button>
                 </div>
                 <nav class="hidden md:flex space-x-10">
+                    @if(Route::is('posts.index'))
 
+                    @else
+                    <a href="{{route('posts.index')}}" class="text-base font-medium text-gray-500 hover:text-gray-900"> Home </a>
+                    @endif
 
-                    @if(Route::is('posts.create'))
+                @if(Route::is('posts.create'))
 
                         @else
                         <a href="{{route('posts.create')}}" class="text-base font-medium text-gray-500 hover:text-gray-900"> Create a Post </a>
