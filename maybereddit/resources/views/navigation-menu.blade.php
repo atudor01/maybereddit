@@ -16,7 +16,7 @@
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('posts.index') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Index') }}
+                        {{ __('Home') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('posts.create') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Create Post') }}

@@ -5,6 +5,7 @@
         MaybeReddit
     </title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
     <script src="{{ asset('helper.js') }}" ></script>
 
