@@ -51,23 +51,26 @@
                         @else
                         <a href="{{route('posts.create')}}" class="text-base font-medium text-gray-500 hover:text-gray-900"> Create a Post </a>
                     @endif
-
-
                 </nav>
                 <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
                     @if (Route::has('login'))
-                                        <div class="">
-                                            @auth
-                                                <a href="{{ url('/dashboard') }}" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">Dashboard</a>
-                                            @else
-                                                <a href="{{ route('login') }}" class="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">Log in</a>
+                        <div class=" inline-flex	">
+                            @auth
 
-                                                @if (Route::has('register'))
-                                                    <a href="{{ route('register') }}" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">Register</a>
-                                                @endif
-                                            @endauth
-                                        </div>
-                                    @endif
+                                  <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button type="submit" class="mt-5 whitespace-nowrap inline-flex text-base font-medium text-gray-500 hover:text-gray-900">Log out</button>
+                                </form>
+                                <a href="{{ url('/dashboard') }}" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">Dashboard</a>
+
+                                  @else
+                                <a href="{{ route('login') }}" class="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">Log in</a>
+                                @if (Route::has('register'))
+                                    <a href="{{ route('register') }}" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">Register</a>
+                                @endif
+                            @endauth
+                        </div>
+                    @endif
 {{--                    <a href="#" class="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"> Sign in </a>--}}
 {{--                    <a href="#" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"> Sign up </a>--}}
                 </div>

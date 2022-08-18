@@ -22,6 +22,7 @@ class PostPolicy
             return true;
         }
     }
+
     public function viewAny(User $user)
     {
         return $user->hasRole('admin');
