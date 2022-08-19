@@ -108,5 +108,20 @@ class PostController extends Controller
         return redirect('/');
     }
 
+    public function myposts()
+    {
+        $user = auth()->user();
+
+        //check user log in
+        if (!$user) {
+            return redirect('/');
+        }
+
+        $posts = $user->posts()->latest()->paginate();
+        return view('posts.myposts', compact('posts'));
+    }
+
+
+
 
 }

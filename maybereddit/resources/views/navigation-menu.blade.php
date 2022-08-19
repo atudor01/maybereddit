@@ -21,6 +21,9 @@
                     <x-jet-nav-link href="{{ route('posts.create') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Create Post') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('posts.myposts') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('My Posts') }}
+                    </x-jet-nav-link>
 {{--                    @if (!Auth::guest())--}}
 {{--                        @if(Auth::user()->hasRole('admin'))--}}
 {{--                            <x-jet-nav-link href="{{ route('users') }}" :active="request()->routeIs('dashboard')">--}}
