@@ -17,6 +17,8 @@ use App\Http\Controllers\CommentController;
 
 
 Route::get('/', [PostController::class, 'index'])->name('posts.index');
+Route::get('/myposts', [PostController::class, 'myposts'])->name('posts.myposts');
+
 
 
 Route::get('posts/create', [PostController::class, 'create'])->name('posts.create')->middleware('auth');

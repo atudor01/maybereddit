@@ -22,14 +22,7 @@ class User extends Authenticatable
     use HasRoles;
     use Impersonate;
 
-    public function posts()
-    {
-        return $this->hasMany(Post::class);
-    }
-    public function comments()
-    {
-        return $this->hasMany(Comment::class);
-    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -70,5 +63,14 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 
 }
