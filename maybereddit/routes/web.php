@@ -29,6 +29,7 @@ Route::patch('posts/{post}', [PostController::class, 'update'])->name('posts.upd
 Route::delete('posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy')->middleware('can:delete,post');
 
 Route::post('comments', [CommentController::class, 'store'])->name('comments.store');
+Route::post('/reply/store', [CommentController::class, 'replyStore'])->name('reply.store');
 
 
 Route::middleware([
