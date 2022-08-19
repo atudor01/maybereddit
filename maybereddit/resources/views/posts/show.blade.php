@@ -35,11 +35,11 @@
 @else
     @if($upvoted)
         <div class="flex justify-center gap-4">
-            You  liked for this post
+            You  liked this post
         </div>
         @else
             <div class="flex justify-center gap-4">
-                You  disliked for this post
+                You  disliked this post
             </div>
         @endif
 @endif
