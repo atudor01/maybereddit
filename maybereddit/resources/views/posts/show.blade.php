@@ -7,6 +7,43 @@
     <div class="text-center text-gray-800 px-8 py-8">{{$post->body}}</div>
     <hr />
 
+
+@if(!$return)
+
+
+    <div class="flex justify-center gap-4">
+        <form action="{{route('posts.upvote', $post)}}" method="post">
+            @csrf
+        <button type="submit" class='relative bg-blue-500 text-white p-6 rounded text-2xl font-bold overflow-visible'>
+            Like
+{{--            <div class="absolute top-0 right-0 -mt-4 -mr-4 px-4 py-1 bg-slate-500 rounded-full">1</div>--}}
+        </button>
+        </form>
+
+
+
+        <br/><br/><br/>
+        <form action="{{route('posts.downvote', $post)}}" method="post">
+            @csrf
+        <button class='relative bg-red-500 text-white p-6 rounded text-2xl font-bold overflow-visible'>
+            Dislike
+{{--            <div class="absolute top-0 right-0 -mt-4 -mr-4 px-4 py-1 bg-slate-500 rounded-full">2000</div>--}}
+        </button>
+        </form>
+
+    </div>
+@else
+    @if($upvoted)
+        <div class="flex justify-center gap-4">
+            You  liked for this post
+        </div>
+        @else
+            <div class="flex justify-center gap-4">
+                You  disliked for this post
+            </div>
+        @endif
+@endif
+
     <div class="max-w-lg shadow-md w-full mb-10">
         <form method="post" action="{{ route('comments.store') }}" class="w-full p-4">
             @csrf
@@ -31,7 +68,6 @@
                 @endif
         </form>
     </div>
-
 
     @include('partials._comment_replies', ['comments' => $post->comments, 'post_id' => $post->id])
     <hr />

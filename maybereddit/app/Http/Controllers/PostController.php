@@ -8,6 +8,10 @@ use App\Http\Requests;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+
+
+
+
 class PostController extends Controller
 {
     /**
@@ -78,10 +82,11 @@ class PostController extends Controller
 //            dd('no');
 //        }
 
+        $return = $user->hasVoted($post);
+        $upvoted =$user->hasUpvoted($post);
 
 
-
-        return view('posts.show', compact('post', 'user'));
+        return view('posts.show', compact('post', 'user', 'return', 'upvoted'));
     }
 
 
@@ -121,6 +126,23 @@ class PostController extends Controller
         return view('posts.myposts', compact('posts'));
     }
 
+    //create  a function that upvotes post
+    public function upvote(Post $post)
+    {
+        $user = auth()->user();
+        $user->upvote($post);
+
+        return back();
+    }
+
+    //create  a function that downvotes post
+    public function downvote(Post $post)
+    {
+        $user = auth()->user();
+        $user->downvote($post);
+
+        return back();
+    }
 
 
 
