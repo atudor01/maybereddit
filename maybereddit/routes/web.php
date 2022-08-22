@@ -16,6 +16,7 @@ use App\Http\Controllers\CommentController;
 */
 
 
+Route::get('/test', [\App\Http\Controllers\TestController::class, 'index'])->name('test.index');
 Route::get('/', [PostController::class, 'index'])->name('posts.index');
 Route::get('/myposts', [PostController::class, 'myposts'])->name('posts.myposts');
 Route::post('upvote/{post}', [PostController::class, 'upvote'])->name('posts.upvote');

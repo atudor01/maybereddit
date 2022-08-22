@@ -14,6 +14,7 @@ use Spatie\Permission\Traits\HasRoles;
 use LaravelInteraction\Vote\Concerns\Voter;
 
 
+
 class User extends Authenticatable
 {
     use HasApiTokens;
