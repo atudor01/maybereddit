@@ -3,12 +3,13 @@
 declare(strict_types=1);
 
 use LaravelInteraction\Vote\Vote;
+use App\Models\User;
 
 return [
     'load_migrations' => true,
     'uuids' => false,
     'models' => [
-        'user' => \App\User::class,
+        'user' => User::class,
         'vote' => Vote::class,
     ],
     'table_names' => [

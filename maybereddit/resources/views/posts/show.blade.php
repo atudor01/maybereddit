@@ -7,8 +7,8 @@
     <div class="text-center text-gray-800 px-8 py-8">{{$post->body}}</div>
     <hr />
 
-
-@if(!$return)
+@if(isset($user))
+@if(!($user->hasVoted($post)))
 
 
     <div class="flex justify-center gap-4">
@@ -16,7 +16,7 @@
             @csrf
         <button type="submit" class='relative bg-blue-500 text-white p-6 rounded text-2xl font-bold overflow-visible'>
             Like
-{{--            <div class="absolute top-0 right-0 -mt-4 -mr-4 px-4 py-1 bg-slate-500 rounded-full">1</div>--}}
+            <div class="absolute top-0 right-0 -mt-4 -mr-4 px-4 py-1 bg-slate-500 rounded-full">{{$post->upvotersCount()}}</div>
         </button>
         </form>
 
@@ -27,23 +27,25 @@
             @csrf
         <button class='relative bg-red-500 text-white p-6 rounded text-2xl font-bold overflow-visible'>
             Dislike
-{{--            <div class="absolute top-0 right-0 -mt-4 -mr-4 px-4 py-1 bg-slate-500 rounded-full">2000</div>--}}
+            <div class="absolute top-0 right-0 -mt-4 -mr-4 px-4 py-1 bg-slate-500 rounded-full">{{$post->downvotersCount()}}</div>
         </button>
         </form>
 
     </div>
 @else
-    @if($upvoted)
+    @if($user->hasUpvoted($post))
         <div class="flex justify-center gap-4">
-            You  liked for this post
+            You  liked this  and {{$post->upvotersCount() }} people liked it.
         </div>
         @else
             <div class="flex justify-center gap-4">
-                You  disliked for this post
+                You  disliked this and {{$post->downvotersCount()  }} people disliked it.
             </div>
         @endif
 @endif
-
+    @else
+    <h1 > TO ABLE TO COMMENT AND LIKE THE POST YOU HAVE TO LOG IN :))</h1>
+    @endif
     <div class="max-w-lg shadow-md w-full mb-10">
         <form method="post" action="{{ route('comments.store') }}" class="w-full p-4">
             @csrf

@@ -7,9 +7,7 @@ use App\Http\Requests\UpdatePostRequest;
 use App\Http\Requests;
 use App\Models\User;
 use Illuminate\Http\Request;
-
-
-
+use Illuminate\Support\Facades\App;
 
 
 class PostController extends Controller
@@ -76,17 +74,9 @@ class PostController extends Controller
     {
 
         $user = auth()->user();
-//        if ($user->hasRole('admin')){
-//            dd('yersss');
-//        }else{
-//            dd('no');
-//        }
-
-        $return = $user->hasVoted($post);
-        $upvoted =$user->hasUpvoted($post);
 
 
-        return view('posts.show', compact('post', 'user', 'return', 'upvoted'));
+        return view('posts.show', compact('post', 'user', ));
     }
 
 
