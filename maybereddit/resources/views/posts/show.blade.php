@@ -35,11 +35,13 @@
 @else
     @if($user->hasUpvoted($post))
         <div class="flex justify-center gap-4">
+
             You  liked this  and {{$post->upvotersCount() }} people liked it.
         </div>
         @else
             <div class="flex justify-center gap-4">
                 You  disliked this and {{$post->downvotersCount()  }} people disliked it.
+
             </div>
         @endif
 @endif
@@ -53,13 +55,21 @@
                 <div class="form-group">
                     <span class="text-gray-600">Add a comment</span>
                     {{--            <input type="text" name="comment_body" class="form-control" />--}}
-                    <textarea class="form-control block w-full mt-1 rounded bg-gray-100" rows="3" name="comment_body"></textarea>
+                    <textarea class="form-control block w-full mt-1 rounded bg-gray-100" rows="3" name="comment_body" required ></textarea>
                     <input type="hidden" name="post_id" value="{{ $post->id }}" />
                 </div>
             </label>
+            @if (!Auth::guest())
             <div class="form-group">
                 <input type="submit" class="btn btn-warning px-3 py-2 text-sm text-blue-100 bg-blue-600 rounded hover:bg-sky-700 cursor-pointer" value="Comment" />
             </div>
+            @else
+
+                <div class="form-group pt-3">
+                    <a href="{{ route('login') }}" class="btn btn-warning px-3 py-2 text-sm text-blue-100 bg-blue-600 rounded hover:bg-sky-700 cursor-pointer">Comment</a>
+                </div>
+
+                @endif
         </form>
     </div>
 
