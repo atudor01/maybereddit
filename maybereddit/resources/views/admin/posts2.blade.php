@@ -36,6 +36,11 @@
 
     <script>
 
+        //when page loads, load data from server
+        window.onload = function () {
+            loadData();
+        };
+
 
 
         const container = document.querySelector('#example1');
@@ -81,10 +86,11 @@
         });
 
 
+
+
         // Post Title, Post Link (html), Author Name, Upvotes, Downvotes
 
-        Handsontable.dom.addEvent(load, 'click', () => {
-
+        function loadData() {
             const array = @json($posts);
 
             const dataMapped = array.data.map(function(item) {
@@ -96,12 +102,17 @@
 
 
 
-                // const data = JSON.parse(res.response);
-                console.log(dataMapped);
-                hot.loadData(dataMapped);
-                // or, use `updateData()` to replace `data` without resetting states
+            // const data = JSON.parse(res.response);
+            console.log(dataMapped);
+            hot.loadData(dataMapped);
+            // or, use `updateData()` to replace `data` without resetting states
 
-                exampleConsole.innerText = 'Data loaded';
+            exampleConsole.innerText = 'Data loaded';
+        }
+
+        Handsontable.dom.addEvent(load, 'click', () => {
+
+          
 
         });
         Handsontable.dom.addEvent(save, 'click', () => {
