@@ -55,7 +55,11 @@ class PostController extends Controller
     }
     public function ajaxLoading()
     {
-        return Post::latest()->get();
+
+         return Post::latest()->get();
+         dd($posts);
+
+
 
 //        return response()->json([
 //            'posts' => $posts,

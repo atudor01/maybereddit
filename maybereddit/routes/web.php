@@ -41,7 +41,7 @@ Route::get('/users', [UserController::class, 'index'])->name('users.index');
 Route::get('/admin/posts', [PostController::class, 'admin'])->name('admin.posts');
 Route::get('/admin/posts2', [PostController::class, 'admin2'])->name('admin.posts2');
 Route::get('/admin/users', [UserController::class, 'admin'])->name('admin.users');
-Route::get('/ajaxLoading', [PostController::class, 'ajaxLoading'])->name('admin.ajax');
+Route::get('admin/ajaxLoading', [PostController::class, 'ajaxLoading'])->name('admin.ajax');
 
 
 Route::middleware([
