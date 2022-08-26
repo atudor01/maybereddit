@@ -48,12 +48,17 @@
 
         const hot = new Handsontable(container, {
             startRows: 8,
-            startCols: 6,
+            startCols: 10,
             rowHeaders: true,
             colHeaders: true,
             height: 'auto',
             colHeaders: ['Title', 'Description', 'Comments', ],
+            columns: [
+                {data: 0, renderer: "html"},
+                {data: 1, renderer: "html"},
+                {data: 2, renderer: 'text'},
 
+            ],
             licenseKey: 'non-commercial-and-evaluation',
             afterChange: function (change, source) {
                 if (source === 'loadData') {
@@ -75,13 +80,6 @@
             }
         });
 
-        function safeHtmlRenderer(instance, td, row, col, prop, value, cellProperties) {
-            // be sure you only allow certain HTML tags to avoid XSS threats
-            // (you should also remove unwanted HTML attributes)
-            td.innerHTML = Handsontable.helper.sanitize(value, {
-                ALLOWED_TAGS: ['em', 'b', 'strong', 'a', 'big'],
-            });
-        }
 
         // Post Title, Post Link (html), Author Name, Upvotes, Downvotes
 
@@ -92,14 +90,14 @@
             const dataMapped = array.data.map(function(item) {
                 return [
                     item.title,
-                    `<a href="${item.slug}"></a>`,
+                    `<a href="/posts/${item.slug}">${item.slug}</a>`,
                     item.user.name];
             }   );
 
 
 
                 // const data = JSON.parse(res.response);
-                //
+                console.log(dataMapped);
                 hot.loadData(dataMapped);
                 // or, use `updateData()` to replace `data` without resetting states
 
