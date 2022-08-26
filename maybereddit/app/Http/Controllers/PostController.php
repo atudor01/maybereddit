@@ -53,6 +53,16 @@ class PostController extends Controller
         $posts = Post::latest()->paginate();
         return view('admin.posts2', compact('posts'));
     }
+    public function ajaxLoading()
+    {
+        return Post::latest()->get();
+
+//        return response()->json([
+//            'posts' => $posts,
+//            'status' => 'success'
+//        ]);
+
+    }
 
 
     public function store(Request $request)

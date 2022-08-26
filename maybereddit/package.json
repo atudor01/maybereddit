@@ -21,6 +21,7 @@
         "tailwindcss": "^3.1.8"
     },
     "dependencies": {
-        "handsontable": "^12.1.2"
+        "handsontable": "^12.1.2",
+        "jquery": "^3.6.0"
     }
 }
