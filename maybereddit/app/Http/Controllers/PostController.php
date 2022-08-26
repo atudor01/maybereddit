@@ -43,6 +43,17 @@ class PostController extends Controller
 
     }
 
+    public function admin()
+    {
+        $posts = Post::latest()->paginate();
+        return view('admin.posts', compact('posts'));
+    }
+    public function admin2()
+    {
+        $posts = Post::latest()->paginate();
+        return view('admin.posts2', compact('posts'));
+    }
+
 
     public function store(Request $request)
     {

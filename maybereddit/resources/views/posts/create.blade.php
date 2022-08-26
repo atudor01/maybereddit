@@ -1,8 +1,17 @@
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Create Post') }}
+        </h2>
+    </x-slot>
+    <x-slot name="slot">
 
-<x-header> </x-header>
-<div class="grid place-items-center">
-    <div class="text-center text-3xl font-bold text-gray-800 px-8 py-8">Create Post</div>
-<div class="w-full max-w-sm block p-6 rounded-lg shadow-lg bg-white">
+
+
+
+
+<div class="grid h-screen place-items-center">
+<div class="w-full max-w-sm block p-6 rounded-lg shadow-lg bg-white -mt-40">
 
     <form action="{{route('posts.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -70,5 +79,8 @@
     </form>
 </div>
 </div>
-<x-footer> </x-footer>
 
+
+    </x-slot>
+
+</x-app-layout>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,12 @@ Route::delete('posts/{post}', [PostController::class, 'destroy'])->name('posts.d
 
 Route::post('comments', [CommentController::class, 'store'])->name('comments.store');
 Route::post('/reply/store', [CommentController::class, 'replyStore'])->name('reply.store');
+
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
+
+Route::get('/admin/posts', [PostController::class, 'admin'])->name('admin.posts');
+Route::get('/admin/posts2', [PostController::class, 'admin2'])->name('admin.posts2');
+Route::get('/admin/users', [UserController::class, 'admin'])->name('admin.users');
 
 
 Route::middleware([

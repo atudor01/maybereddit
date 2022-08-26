@@ -1,5 +1,6 @@
-<x-header></x-header>
+<x-guest-layout>
 
+    <x-slot name="slot">
 <div class="w-full flex flex-wrap justify-center ">
 
 
@@ -23,3 +24,6 @@
 
 <x-post-card></x-post-card>
 <x-footer></x-footer>
+    </x-slot>
+
+</x-guest-layout>

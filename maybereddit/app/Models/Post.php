@@ -14,6 +14,8 @@ class Post extends Model
     use HasFactory, SoftDeletes, Sluggable;
     use Voteable;
 
+    protected $with = ['user'];
+
     protected $fillable = [
         'user_id',
         'title',

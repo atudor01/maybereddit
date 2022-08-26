@@ -1,20 +1,3 @@
-<html>
-<head>
-
-    <title>
-        MaybeReddit
-    </title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
-    <script src="{{ asset('helper.js') }}" ></script>
-
-{{--    <script type="text/javascript" src="{{ asset('js/helper.js') }}"></script>--}}
-{{--    <script type="text/javascript" src="{{URL::asset('js/helper.js')}}"></script>--}}
-
-</head>
-
-<body>
 <div class="w-full flex flex-col h-screen justify-between">
 <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900 bg-slate-200">
 
