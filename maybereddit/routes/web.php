@@ -23,7 +23,7 @@ Route::get('/myposts', [PostController::class, 'myposts'])->name('posts.myposts'
 Route::post('upvote/{post}', [PostController::class, 'upvote'])->name('posts.upvote');
 Route::post('downvote/{post}', [PostController::class, 'downvote'])->name('posts.downvote');
 
-
+Route::post('/admin/update-via-ajax', [PostController::class, 'updateViaAjax'])->name('posts.update-via-ajax');
 
 
 Route::get('posts/create', [PostController::class, 'create'])->name('posts.create')->middleware('auth');
