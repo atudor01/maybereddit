@@ -50,7 +50,7 @@ class PostController extends Controller
     }
     public function admin2()
     {
-        $posts = Post::all();
+        $posts = Post::latest()->paginate();
         return view('admin.posts2', compact('posts'));
     }
     public function admin3()

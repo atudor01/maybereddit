@@ -4,28 +4,31 @@
             {{ __('posts2') }}
         </h2>
     </x-slot>
-{{--    <x-slot name="slot">--}}
-{{--       <div class="grid h-screen place-items-center">--}}
-{{--        <div id="example"></div>--}}
+    {{--    <x-slot name="slot">--}}
+    {{--       <div class="grid h-screen place-items-center">--}}
+    {{--        <div id="example"></div>--}}
 
 
 
-{{--       </div>--}}
-{{--    </x-slot>--}}
+    {{--       </div>--}}
+    {{--    </x-slot>--}}
 
-
+    {{ $posts->links() }}
     <div id="example1" class="hot"></div>
+
+
+
 
     <div class="controls">
         {{--    <button id="load" class="button button--primary button--blue">Load data</button>&nbsp;--}}
-{{--        <button id="save" class="button button--primary button--blue">Save data</button>--}}
+        {{--        <button id="save" class="button button--primary button--blue">Save data</button>--}}
         <label>
             <input type="hidden" type="checkbox" name="autosave" id="autosave" checked/>
             Autosave Activated
         </label>
     </div>
 
-{{--    <pre id="example1console" class="console">Click "Load" to load data from server</pre>--}}
+    {{--    <pre id="example1console" class="console">Click "Load" to load data from server</pre>--}}
 
 
     @push('scripts')
@@ -91,7 +94,7 @@
 
                     //find changed post id
                     const changedRow = hot.getDataAtRow(change[0][0]);
-                  ;
+                    ;
                     $.ajax({
                         type: "POST",
                         url: "{{route('posts.update-via-ajax')}}",
