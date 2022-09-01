@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 
 
+
 return new class extends Migration
 {
     /**
@@ -24,6 +25,7 @@ return new class extends Migration
             $table->softDeletes();
             $table->timestamps();
             $table->timestamp('published_at')->nullable();
+
         });
 
     }

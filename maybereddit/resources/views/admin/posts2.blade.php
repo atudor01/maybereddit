@@ -30,6 +30,14 @@
 
     {{--    <pre id="example1console" class="console">Click "Load" to load data from server</pre>--}}
 
+<div hidden>
+    @foreach($posts as $post)
+        {{$post->upvotes = $post->upvotersCount()}}
+        {{$post->downvotes = $post->downvotersCount()}}
+    @endforeach
+</div>
+
+
 
     @push('scripts')
         <script
@@ -60,13 +68,15 @@
                 rowHeaders: true,
                 colHeaders: true,
                 height: 'auto',
-                colHeaders: ['Post id' , 'Title', 'link', 'author_id','author' ],
+                colHeaders: ['Post id' , 'Title', 'link', 'author_id','author','upvotes','downvotes' ],
                 columns: [
                     {data: 0, renderer: "html"},
                     {data: 1, renderer: "html"},
                     {data: 2, renderer: 'html',editor: false},
                     {data: 3, renderer: 'text'},
                     {data: 4, renderer: 'text'},
+                    {data: 5, renderer: 'text'},
+                    {data: 6, renderer: 'text'},
 
                 ],
                 hiddenColumns: {
@@ -128,13 +138,17 @@
 
             function loadData() {
                 const array = @json($posts);
+                console.log(array);
                 const dataMapped = array.data.map(function(item) {
+
                     return [
                         item.id,
                         item.title,
                         `<a href="/posts/${item.slug}">${item.slug}</a>`,
                         item.user.id,
                         item.user.name,
+                        item.upvotes,
+                        item.downvotes,
                     ];
                 }   );
 
