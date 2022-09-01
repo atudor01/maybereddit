@@ -7,16 +7,13 @@
     <x-slot name="slot">
 
 
+        <div class="grid h-screen place-items-center">
+            <div class="w-full max-w-sm block p-6 rounded-lg shadow-lg bg-white -mt-40">
 
-
-
-<div class="grid h-screen place-items-center">
-<div class="w-full max-w-sm block p-6 rounded-lg shadow-lg bg-white -mt-40">
-
-    <form action="{{route('posts.store')}}" method="POST" enctype="multipart/form-data">
-        @csrf
-        <div class="form-group mb-6">
-            <input type="text" class="form-control block
+                <form action="{{route('posts.store')}}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group mb-6">
+                        <input type="text" class="form-control block
         w-full
         px-3
         py-1.5
@@ -30,9 +27,9 @@
         ease-in-out
         m-0
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="title"
-                   placeholder="Title" name="title">
-        </div>
-        <div class="form-group mb-6">
+                               placeholder="Title" name="title">
+                    </div>
+                    <div class="form-group mb-6">
       <textarea
           class="
         form-control
@@ -56,9 +53,9 @@
           rows="3"
           placeholder="Your post"
       ></textarea>
-        </div>
+                    </div>
 
-        <button type="submit" class="
+                    <button type="submit" class="
       w-full
       px-6
       py-2.5
@@ -75,10 +72,11 @@
       active:bg-blue-800 active:shadow-lg
       transition
       duration-150
-      ease-in-out">Submit</button>
-    </form>
-</div>
-</div>
+      ease-in-out">Submit
+                    </button>
+                </form>
+            </div>
+        </div>
 
 
     </x-slot>

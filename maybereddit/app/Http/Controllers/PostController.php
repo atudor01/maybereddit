@@ -58,25 +58,6 @@ class PostController extends Controller
         $posts = Post::all();
         return view('admin.posts3', compact('posts'));
     }
-    public function something(Request $request)
-    {
-
-        $post = Post::find($request->data[0]);
-        $user = $post->user;
-        if($request->change[0][1]==1){
-            $post->title = $request->change[0][3];
-
-        }
-        if($request->change[0][1]==2){
-            $post->user->name = $request->change[0][3];
-            $user->save();
-        }
-
-        $post->save();
-
-
-        return redirect()->route('admin.posts3');
-    }
 
     public function store(Request $request)
     {
@@ -91,17 +72,6 @@ class PostController extends Controller
 
         return redirect()->route('posts.show', $post);
     }
-
-//        $attributes = request()->validate([
-//            'title' => 'required',
-//            'body' => 'required',
-//        ]);
-//        $attributes['user_id'] = auth()->id();
-//        $attributes['slug'] = str_slug($attributes['title']);
-//        Post::create($attributes);
-//
-//        return redirect('/');//->route('posts.show')->with('success', 'Post added successfully');
-//    }
 
 
     public function show(Post $post)
@@ -180,7 +150,9 @@ class PostController extends Controller
           $post = Post::where('id',$newData[0]);
           $post->update([
               'title' => $oldData[3],
+              'slug' => str_slug($oldData[3])
           ]);
+          return redirect()->route('admin.posts2');
       }
 
       if ($oldData[1]== '4'){

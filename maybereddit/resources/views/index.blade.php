@@ -23,7 +23,6 @@
 
 
 <x-post-card></x-post-card>
-<x-footer></x-footer>
     </x-slot>
 
 </x-guest-layout>
