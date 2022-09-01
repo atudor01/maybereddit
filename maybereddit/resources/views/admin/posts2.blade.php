@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-guest-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('posts2') }}
@@ -15,7 +15,7 @@
 
 
 
-</x-app-layout>
+</x-guest-layout>
 
 <div id="example1" class="hot"></div>
 
@@ -55,7 +55,6 @@
             startRows: 8,
             startCols: 10,
             rowHeaders: true,
-            colHeaders: true,
             height: 'auto',
             colHeaders: ['Title', 'Description', 'Comments', ],
             columns: [
@@ -112,7 +111,7 @@
 
         Handsontable.dom.addEvent(load, 'click', () => {
 
-          
+
 
         });
         Handsontable.dom.addEvent(save, 'click', () => {

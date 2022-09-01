@@ -50,24 +50,33 @@ class PostController extends Controller
     }
     public function admin2()
     {
-        $posts = Post::latest()->paginate();
+        $posts = Post::all();
         return view('admin.posts2', compact('posts'));
     }
-    public function ajaxLoading()
+    public function admin3()
+    {
+        $posts = Post::all();
+        return view('admin.posts3', compact('posts'));
+    }
+    public function something(Request $request)
     {
 
-         return Post::latest()->get();
-         dd($posts);
+        $post = Post::find($request->data[0]);
+        $user = $post->user;
+        if($request->change[0][1]==1){
+            $post->title = $request->change[0][3];
+
+        }
+        if($request->change[0][1]==2){
+            $post->user->name = $request->change[0][3];
+            $user->save();
+        }
+
+        $post->save();
 
 
-
-//        return response()->json([
-//            'posts' => $posts,
-//            'status' => 'success'
-//        ]);
-
+        return redirect()->route('admin.posts3');
     }
-
 
     public function store(Request $request)
     {
@@ -111,10 +120,10 @@ class PostController extends Controller
     }
 
 
-    public function update(Post $post)
+    public function update(Post $post, $request)
     {
         $post->update([
-            'title' => request('title'),
+            'title' => $request->title,
             'body' => request('body'),
             'slug' => str_slug(request('title')),
         ]);
