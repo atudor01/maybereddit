@@ -159,6 +159,60 @@ class PostController extends Controller
         return back();
     }
 
+    public function updateViaAjax(Request $request){
+//        return $request->all();
+
+      $oldData =$request->change[0];
+      $newData =$request->data;
+
+      if ($oldData[1]== '1'){
+          //update title
+
+          $post = Post::where('id',$newData[0]);
+          $post->update([
+              'title' => $oldData[3],
+          ]);
+      }
+
+      if ($oldData[1]== '4'){
+          //update author
+
+            $user = User::where('id', $newData[3]);
+            $user->update([
+              'name' => $oldData[3],
+          ]);
+      }
+
+      return response()->json([
+          'status' => 'success'
+      ]);
+
+
+
+
+//      $post = Post::find($updatedData['id']);
+
+
+
+
+
+
+
+
+
+
+//    $post = Post::find($request->id);
+//        $post->update([
+//            'title' => request('title'),
+//            'body' => request('body'),
+//            'slug' => str_slug(request('title')),
+//        ]);
+//        return redirect()->route('posts.show', $post);
+
+    }
+
+
+
 
 
 }
