@@ -5,26 +5,11 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\UserController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-
 Route::get('/test', [\App\Http\Controllers\TestController::class, 'index'])->name('test.index');
 Route::get('/', [PostController::class, 'index'])->name('posts.index');
-Route::get('/myposts', [PostController::class, 'myposts'])->name('posts.myposts');
+Route::get('/myposts', [PostController::class, 'seeMyPosts'])->name('posts.myposts');
 Route::post('upvote/{post}', [PostController::class, 'upvote'])->name('posts.upvote');
 Route::post('downvote/{post}', [PostController::class, 'downvote'])->name('posts.downvote');
-
-Route::post('/admin/update-via-ajax', [PostController::class, 'updateViaAjax'])->name('posts.update-via-ajax');
-
 
 Route::get('posts/create', [PostController::class, 'create'])->name('posts.create')->middleware('auth');
 Route::post('posts', [PostController::class, 'store'])->name('posts.store')->middleware('auth');
@@ -38,12 +23,13 @@ Route::post('/reply/store', [CommentController::class, 'replyStore'])->name('rep
 
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
 
-Route::get('/admin/posts', [PostController::class, 'admin'])->name('admin.posts');
-Route::get('/admin/posts2', [PostController::class, 'admin2'])->name('admin.posts2');
-Route::get('/admin/posts3', [PostController::class, 'admin3'])->name('admin.posts3');
+Route::get('/admin/table1', [PostController::class, 'getLivewire'])->name('admin.posts');
+Route::get('/admin/table2', [PostController::class, 'getHandsOnTable'])->name('admin.posts2');
+
 Route::get('/admin/users', [UserController::class, 'admin'])->name('admin.users');
 Route::get('admin/ajaxLoading', [PostController::class, 'ajaxLoading'])->name('admin.ajax');
 Route::post('/admin/something', [PostController::class, 'something'])->name('admin.something');
+Route::post('/admin/update-via-ajax', [PostController::class, 'updateViaAjax'])->name('posts.update-via-ajax');
 
 
 Route::middleware([

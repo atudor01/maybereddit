@@ -4,28 +4,28 @@
             {{ __('posts2') }}
         </h2>
     </x-slot>
-        <x-slot name="slot">
+
+    <x-slot name="slot">
+        {{ $posts->links() }}
+        <div id="example1" class="hot">
+
+        </div>
 
 
-    {{ $posts->links() }}
-    <div id="example1" class="hot"></div>
+        <div class="controls">
+            <label>
+                <input type="hidden" type="checkbox" name="autosave" id="autosave" checked/>
+                Autosave Activated
+            </label>
+        </div>
 
-
-    <div class="controls">
-        <label>
-            <input type="hidden" type="checkbox" name="autosave" id="autosave" checked/>
-            Autosave Activated
-        </label>
-    </div>
-
-
-    <div hidden>
-        @foreach($posts as $post)
-            {{$post->upvotes = $post->upvotersCount()}}
-            {{$post->downvotes = $post->downvotersCount()}}
-        @endforeach
-    </div>
-        </x-slot>
+        <div hidden>
+            @foreach($posts as $post)
+                {{$post->upvotes = $post->upvotersCount()}}
+                {{$post->downvotes = $post->downvotersCount()}}
+            @endforeach
+        </div>
+    </x-slot>
 
 
     @push('scripts')

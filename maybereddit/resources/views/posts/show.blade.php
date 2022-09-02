@@ -37,13 +37,11 @@
 @else
     @if($user->hasUpvoted($post))
         <div class="flex justify-center gap-4">
-
             You  liked this  and {{$post->upvotersCount() }} people liked it.
         </div>
         @else
             <div class="flex justify-center gap-4">
                 You  disliked this and {{$post->downvotersCount()  }} people disliked it.
-
             </div>
         @endif
 @endif
@@ -76,19 +74,8 @@
     </div>
 
     @include('partials._comment_replies', ['comments' => $post->comments, 'post_id' => $post->id])
+
     <hr />
-
-
-
-
-
-
-
-
-
-
-
-
 
     @if (!Auth::guest())
         @if(Auth::user()->hasRole('admin')|| Auth::user()->id == $post->user_id)

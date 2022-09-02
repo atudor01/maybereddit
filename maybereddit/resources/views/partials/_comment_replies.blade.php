@@ -1,8 +1,7 @@
 <section class="relative flex items-center justify-center antialiased bg-white min-w-screen min-w-[20rem]">
     <div class="container px-0 mx-auto sm:px-5">
 
-        <div
-            class="  ">
+        <div class="  ">
             <div class="flex flex-row">
                 @foreach($comments as $comment)
                     <div class="display-comment">

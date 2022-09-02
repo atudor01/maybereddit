@@ -24,13 +24,6 @@
                     <x-jet-nav-link href="{{ route('posts.myposts') }}" :active="request()->routeIs('dashboard')">
                         {{ __('My Posts') }}
                     </x-jet-nav-link>
-{{--                    @if (!Auth::guest())--}}
-{{--                        @if(Auth::user()->hasRole('admin'))--}}
-{{--                            <x-jet-nav-link href="{{ route('users') }}" :active="request()->routeIs('dashboard')">--}}
-{{--                                {{ __('Impersonate') }}--}}
-{{--                            </x-jet-nav-link>--}}
-{{--                        @endif--}}
-{{--                    @endif--}}
                 </div>
             </div>
 
@@ -121,11 +114,7 @@
                                     {{ __('API Tokens') }}
                                 </x-jet-dropdown-link>
                             @endif
-{{--                            @if(session('impersonated_by'))--}}
-{{--                            <x-jet-dropdown-link href="{{ route('impersonate_leave') }}">--}}
-{{--                                {{ __('Back to my user') }}--}}
-{{--                            </x-jet-dropdown-link>--}}
-{{--                            @endif--}}
+
                             <div class="border-t border-gray-100"></div>
 
                             <!-- Authentication -->

@@ -26,7 +26,6 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $user = User::create($request->all());
-
         return redirect()->route('users.show', $user);
     }
 
@@ -39,7 +38,6 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $user->update($request->all());
-
         return redirect()->route('users.show', $user);
     }
 
@@ -47,7 +45,6 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $user->delete();
-
         return redirect()->route('users.index');
     }
 }
