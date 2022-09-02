@@ -13,7 +13,6 @@ Route::get('/test', [TestController::class, 'index'])->name('test.index');
 
 Route::get('/', [PostController::class, 'index'])->name('posts.index');
 Route::get('posts/{post}', [PostController::class, 'show'])->name('posts.show');
-Route::get('/myposts', [PostController::class, 'seeMyPosts'])->name('posts.myposts');
 Route::post('upvote/{post}', [PostController::class, 'upvote'])->name('posts.upvote');
 Route::post('downvote/{post}', [PostController::class, 'downvote'])->name('posts.downvote');
 Route::get('/admin/table1', [PostController::class, 'getLivewire'])->name('admin.table1');
@@ -31,6 +30,7 @@ Route::middleware([
 ])->group(function(){
     Route::get('posts/create', [PostController::class, 'create'])->name('posts.create');
     Route::post('posts', [PostController::class, 'store'])->name('posts.store');
+    Route::get('/myposts', [PostController::class, 'seeMyPosts'])->name('posts.myposts');
 });
 
 Route::middleware([

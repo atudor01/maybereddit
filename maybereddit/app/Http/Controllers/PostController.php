@@ -82,10 +82,6 @@ class PostController extends Controller
     public function seeMyPosts()
     {
         $user = auth()->user();
-        if (!$user) {
-            return redirect('/');
-        }
-
         $posts = $user->posts()->latest()->paginate();
         return view('posts.myposts', compact('posts'));
     }
