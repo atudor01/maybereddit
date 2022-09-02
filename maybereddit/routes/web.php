@@ -15,8 +15,8 @@ Route::get('/', [PostController::class, 'index'])->name('posts.index');
 Route::get('posts/{post}', [PostController::class, 'show'])->name('posts.show');
 Route::post('upvote/{post}', [PostController::class, 'upvote'])->name('posts.upvote');
 Route::post('downvote/{post}', [PostController::class, 'downvote'])->name('posts.downvote');
-Route::get('/admin/table1', [PostController::class, 'getLivewire'])->name('admin.table1');
-Route::get('/admin/table2', [PostController::class, 'getHandsOnTable'])->name('admin.table2');
+Route::get('/admin/livewiretable', [PostController::class, 'getLivewire'])->name('admin.table1');
+Route::get('/admin/handsontable', [PostController::class, 'getHandsOnTable'])->name('admin.table2');
 Route::post('/admin/update-via-ajax', [PostController::class, 'updateViaAjax'])->name('posts.update-via-ajax');
 
 Route::post('comments', [CommentController::class, 'store'])->name('comments.store');

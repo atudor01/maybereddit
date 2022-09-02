@@ -32,13 +32,13 @@ class PostController extends Controller
     public function getLivewire()
     {
         $posts = Post::latest()->paginate();
-        return view('admin.posts', compact('posts'));
+        return view('admin.livewiretable', compact('posts'));
     }
 
     public function getHandsOnTable()
     {
         $posts = Post::latest()->paginate();
-        return view('admin.posts2', compact('posts'));
+        return view('admin.handsontable', compact('posts'));
     }
 
 
