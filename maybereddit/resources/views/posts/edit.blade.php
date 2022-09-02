@@ -1,5 +1,10 @@
-<x-header> </x-header>
-<div class="grid place-items-center">
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Edit Post') }}
+        </h2>
+    </x-slot>
+    <x-slot name="slot"><div class="grid place-items-center">
     <div class="text-center text-3xl font-bold text-gray-800 px-8 py-8">Edit Post</div>
     <div class="w-full max-w-sm block p-6 rounded-lg shadow-lg bg-white">
 
@@ -69,4 +74,6 @@
         </form>
     </div>
 </div>
-<x-footer> </x-footer>
+</x-slot>
+
+</x-app-layout>

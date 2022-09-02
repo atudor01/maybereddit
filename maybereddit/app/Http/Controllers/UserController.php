@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::whereNotNull('id')->paginate();
+        $users = User::query()->paginate();
         return view('users.index', ['users' => $users]);
     }
 
@@ -34,16 +34,14 @@ class UserController extends Controller
         return view('users.edit', ['user' => User::findOrFail($id)]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        $user = User::findOrFail($id);
         $user->update($request->all());
         return redirect()->route('users.show', $user);
     }
 
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        $user = User::findOrFail($id);
         $user->delete();
         return redirect()->route('users.index');
     }

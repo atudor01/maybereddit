@@ -74,8 +74,9 @@
     </div>
 
     @include('partials._comment_replies', ['comments' => $post->comments, 'post_id' => $post->id])
+{{--    <x-comment-replies :comments="post->comments" :$post_id="$post->id"></x-comment-replies>--}}
 
-    <hr />
+    <hr/>
 
     @if (!Auth::guest())
         @if(Auth::user()->hasRole('admin')|| Auth::user()->id == $post->user_id)
